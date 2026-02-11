@@ -7,7 +7,7 @@ namespace GagspeakAPI.Extensions;
 /// <summary> 
 ///     An extention class for available helper methods with gag data.
 /// </summary>
-public static class GagDataEx
+public static class ActiveDataEx
 {
     /// <summary> Determines if any gag is currently equipped in the character's appearance data. </summary>
     /// <param name="gagData">The character appearance data to check.</param>
@@ -62,10 +62,28 @@ public static class GagDataEx
         return -1;
     }
 
+    public static int FindFirstUnused(this CharaActiveRestrictions restrictions)
+    {
+        for (var i = 0; i < restrictions.Restrictions.Length; i++)
+            if (restrictions.Restrictions[i].Identifier != Guid.Empty)
+                return i;
+
+        return -1;
+    }
+
     public static int FindFirstUnlocked(this CharaActiveGags gagData)
     {
         for (var i = 0; i < gagData.GagSlots.Length; i++)
-            if (gagData.GagSlots[i].IsLocked() is false)
+            if (!gagData.GagSlots[i].IsLocked())
+                return i;
+
+        return -1;
+    }
+
+    public static int FindFirstUnlocked(this CharaActiveRestrictions restrictions)
+    {
+        for (var i = 0; i < restrictions.Restrictions.Length; i++)
+            if (!restrictions.Restrictions[i].IsLocked())
                 return i;
 
         return -1;

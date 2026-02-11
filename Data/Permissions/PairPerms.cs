@@ -77,6 +77,11 @@ public record PairPerms
     public int         MaxDuration                { get; set; } = -1; // the max duration of the shock, vibration, or beep.
     public TimeSpan    MaxVibrateDuration         { get; set; } = TimeSpan.Zero; // separate value since vibrations have diff limits.
 
+    /// <summary>
+    ///     If these permissions indicate a recipient having Puppeteer control.
+    /// </summary>
+    public bool IsMarionette() => !string.IsNullOrWhiteSpace(TriggerPhrase) && PuppetPerms != 0;
+
     // member helper for PiShock functions.
     public bool HasValidShareCode() => !string.IsNullOrWhiteSpace(PiShockShareCode) && MaxDuration > 0;
     public TimeSpan GetTimespanFromDuration()

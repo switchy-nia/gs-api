@@ -18,8 +18,8 @@ public class CharaCompositeActiveData
     public CharaActiveRestraint Restraint { get; set; } = new();
     public CharaActiveCollar Collar { get; set; } = new();
     public List<Guid> ActiveCursedItems { get; set; } = new();
-    public AliasStorage GlobalAliasData { get; set; } = new();
-    public Dictionary<string, NamedAliasStorage> PairAliasData { get; set; } = new();
+    public AliasStorage AliasData { get; set; } = new();
+    public List<string> ListeningTo { get; set; } = new();
     public List<ToyBrandName> ValidToys { get; set; } = new();
     public Guid ActivePattern { get; set; } = Guid.Empty;
     public List<Guid> ActiveAlarms { get; set; } = new();

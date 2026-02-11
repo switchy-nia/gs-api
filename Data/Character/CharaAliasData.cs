@@ -1,30 +1,7 @@
 using MessagePack;
+using System.Diagnostics.Contracts;
 
 namespace GagspeakAPI.Data;
-
-[MessagePackObject(keyAsPropertyName: true)]
-public class PairAliasStorage : SortedList<string, NamedAliasStorage>
-{
-    public PairAliasStorage()
-    { }
-
-    // Helpful for config read-write
-    public PairAliasStorage(SortedList<string, NamedAliasStorage> init) 
-        : base(init) 
-    { }
-
-    public bool NameIsStored(string key) => this.TryGetValue(key, out var res) && !string.IsNullOrEmpty(res.StoredNameWorld);
-}
-
-[MessagePackObject(keyAsPropertyName: true)]
-public class NamedAliasStorage
-{
-    public string StoredNameWorld { get; set; } = string.Empty;
-    public AliasStorage Storage { get; set; } = new AliasStorage();
-
-    [IgnoreMember]
-    public string ExtractedListenerName => string.IsNullOrEmpty(StoredNameWorld) ? "<No Name@World Set!>" : StoredNameWorld;
-}
 
 // This can double as a use for a GlobalAliasStorage.
 [MessagePackObject(keyAsPropertyName: true)]
@@ -44,7 +21,7 @@ public class AliasStorage : IEditableStorage<AliasTrigger>
     {
         if (changedItem is null)
             return false;
-
+        
         oldItem.ApplyChanges(changedItem);
         return true;
     }
@@ -62,12 +39,24 @@ public class AliasTrigger : IEditableStorageItem<AliasTrigger>
     /// <summary> The label for the trigger. </summary>
     public string Label { get; set; } = string.Empty;
 
-    /// <summary> The input command that triggers the output command </summary>
+    /// <summary>
+    ///     If the trigger is case sensative.
+    /// </summary>
+    public bool CaseSensative { get; set; } = false;
+
+    /// <summary>
+    ///     The input command that triggers the output command
+    /// </summary>
     public string InputCommand { get; set; } = string.Empty;
 
     /// <summary> Stores Actions with unique types. </summary>
     public HashSet<InvokableGsAction> Actions { get; set; } = new HashSet<InvokableGsAction>() { new TextAction() };
-
+   
+    /// <summary>
+    ///     The Kinksters allowed to view and use this Alias.
+    /// </summary>
+    public HashSet<string> WhitelistedUIDs { get; set; } = new HashSet<string>();
+    
     public AliasTrigger() 
     { }
 

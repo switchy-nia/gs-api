@@ -60,8 +60,9 @@ public interface IGagspeakHub
     Task Callback_KinksterUpdateActiveRestraint(KinksterUpdateActiveRestraint dto);
     Task Callback_KinksterUpdateActiveCollar(KinksterUpdateActiveCollar dto);
     Task Callback_KinksterUpdateActiveCursedLoot(KinksterUpdateActiveCursedLoot dto);
-    Task Callback_KinksterUpdateAliasGlobal(KinksterUpdateAliasGlobal dto);
-    Task Callback_KinksterUpdateAliasUnique(KinksterUpdateAliasUnique dto);
+    // Revisit this
+    Task Callback_KinksterUpdateAlias(KinksterUpdateAlias dto);
+
     Task Callback_KinksterUpdateValidToys(KinksterUpdateValidToys dto);
     Task Callback_KinksterUpdateActivePattern(KinksterUpdateActivePattern dto);
     Task Callback_KinksterUpdateActiveAlarms(KinksterUpdateActiveAlarms dto);

@@ -48,8 +48,8 @@ public interface IGagspeakHubClient : IGagspeakHub
     void OnKinksterUpdateActiveRestraint(Action<KinksterUpdateActiveRestraint> act);
     void OnKinksterUpdateActiveCollar(Action<KinksterUpdateActiveCollar> act);
     void OnKinksterUpdateActiveCursedLoot(Action<KinksterUpdateActiveCursedLoot> act);
-    void OnKinksterUpdateAliasGlobal(Action<KinksterUpdateAliasGlobal> act);
-    void OnKinksterUpdateAliasUnique(Action<KinksterUpdateAliasUnique> act);
+    // Revise this later
+    void OnKinksterUpdateAlias(Action<KinksterUpdateAlias> act);
     void OnKinksterUpdateValidToys(Action<KinksterUpdateValidToys> act);
     void OnKinksterUpdateActivePattern(Action<KinksterUpdateActivePattern> act);
     void OnKinksterUpdateActiveAlarms(Action<KinksterUpdateActiveAlarms> act);
