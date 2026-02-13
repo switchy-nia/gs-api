@@ -48,13 +48,13 @@ public interface IGagspeakHubClient : IGagspeakHub
     void OnKinksterUpdateActiveRestraint(Action<KinksterUpdateActiveRestraint> act);
     void OnKinksterUpdateActiveCollar(Action<KinksterUpdateActiveCollar> act);
     void OnKinksterUpdateActiveCursedLoot(Action<KinksterUpdateActiveCursedLoot> act);
-    // Revise this later
-    void OnKinksterUpdateAlias(Action<KinksterUpdateAlias> act);
+    void OnKinksterUpdateAliasState(Action<KinksterUpdateAliasState> act);
+    void OnKinksterUpdateActiveAliases(Action<KinksterUpdateActiveAliases> act);
     void OnKinksterUpdateValidToys(Action<KinksterUpdateValidToys> act);
     void OnKinksterUpdateActivePattern(Action<KinksterUpdateActivePattern> act);
     void OnKinksterUpdateActiveAlarms(Action<KinksterUpdateActiveAlarms> act);
     void OnKinksterUpdateActiveTriggers(Action<KinksterUpdateActiveTriggers> act);
-    void OnListenerName(Action<UserData, string> act);
+    void OnListenerName(Action<SendNameAction> act);
     void OnShockInstruction(Action<ShockCollarAction> act);
     void OnHypnoticEffect(Action<HypnoticAction> act);
 
@@ -64,6 +64,7 @@ public interface IGagspeakHubClient : IGagspeakHub
     void OnKinksterNewRestraintData(Action<KinksterNewRestraintData> act);
     void OnKinksterNewCollarData(Action<KinksterNewCollarData> act);
     void OnKinksterNewLootData(Action<KinksterNewLootData> act);
+    void OnKinksterNewAliasData(Action<KinksterNewAliasData> act);
     void OnKinksterNewPatternData(Action<KinksterNewPatternData> act);
     void OnKinksterNewAlarmData(Action<KinksterNewAlarmData> act);
     void OnKinksterNewTriggerData(Action<KinksterNewTriggerData> act);

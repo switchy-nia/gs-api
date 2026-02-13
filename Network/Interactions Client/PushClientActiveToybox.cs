@@ -5,15 +5,21 @@ using MessagePack;
 
 namespace GagspeakAPI.Network;
 
-/// <summary> Updated Valid Toys List </summary>
+/// <summary>
+///     Updated Valid Toys List
+/// </summary>
 [MessagePackObject(keyAsPropertyName: true)]
 public record PushClientValidToys(List<UserData> Recipients, List<ToyBrandName> ValidToys);
 
-/// <summary> Updated ActivePattern GUID </summary>
+/// <summary>
+///     Updated ActivePattern GUID
+/// </summary>
 [MessagePackObject(keyAsPropertyName: true)]
 public record PushClientActivePattern(List<UserData> Recipients, Guid ActivePattern, DataUpdateType Type);
 
-/// <summary> Updated Active Alarm List GUID </summary>
+/// <summary>
+///     Updated Active Alarm List GUID
+/// </summary>
 [MessagePackObject(keyAsPropertyName: true)]
 public record PushClientActiveAlarms(List<UserData> Recipients, List<Guid> ActiveAlarms, Guid ChangedItem, DataUpdateType Type);
 

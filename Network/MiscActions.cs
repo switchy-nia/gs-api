@@ -16,3 +16,12 @@ public record HypnoticAction(UserData User, DateTimeOffset ExpireTime, HypnoticE
 /// </summary>
 [MessagePackObject(keyAsPropertyName: true)]
 public record ShockCollarAction(UserData User, int OpCode, int Intensity, int Duration) : KinksterBase(User);
+
+/// <summary>
+///     Sends a small dto of your nameworld to another kinkster. Use with those you trust. <para />
+///     After this is sent once, it is not sent again in any other server calls, nor is it stored anywhere
+///     except the recipients config files.
+/// </summary>
+/// <param name="User"> The recipient that will recieve this message. </param>
+[MessagePackObject(keyAsPropertyName: true)]
+public record SendNameAction(UserData User, string Name) : KinksterBase(User);

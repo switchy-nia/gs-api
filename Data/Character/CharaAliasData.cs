@@ -40,9 +40,9 @@ public class AliasTrigger : IEditableStorageItem<AliasTrigger>
     public string Label { get; set; } = string.Empty;
 
     /// <summary>
-    ///     If the trigger is case sensative.
+    ///     If the trigger should ignore case sensativity or respect it.
     /// </summary>
-    public bool CaseSensative { get; set; } = false;
+    public bool IgnoreCase { get; set; } = false;
 
     /// <summary>
     ///     The input command that triggers the output command
@@ -73,7 +73,10 @@ public class AliasTrigger : IEditableStorageItem<AliasTrigger>
     {
         Enabled = changedItem.Enabled;
         Label = changedItem.Label;
+        IgnoreCase = changedItem.IgnoreCase;
         InputCommand = changedItem.InputCommand;
         Actions = changedItem.Actions.ToHashSet();
+        WhitelistedUIDs = changedItem.WhitelistedUIDs.ToHashSet();
+
     }
 }

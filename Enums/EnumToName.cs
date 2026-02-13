@@ -25,6 +25,16 @@ public static class EnumToName
         _ => "UNK"
     };
 
+    public static string ToName(this NewState state)
+    => state switch
+    {
+        NewState.Enabled => "applied",
+        NewState.Locked => "locked",
+        NewState.Unlocked => "unlocked",
+        NewState.Disabled => "removed",
+        _ => "UNK"
+    };
+
     public static string ToName(this Padlocks padlock)
     => padlock switch
     {

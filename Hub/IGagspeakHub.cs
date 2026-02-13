@@ -60,14 +60,13 @@ public interface IGagspeakHub
     Task Callback_KinksterUpdateActiveRestraint(KinksterUpdateActiveRestraint dto);
     Task Callback_KinksterUpdateActiveCollar(KinksterUpdateActiveCollar dto);
     Task Callback_KinksterUpdateActiveCursedLoot(KinksterUpdateActiveCursedLoot dto);
-    // Revisit this
-    Task Callback_KinksterUpdateAlias(KinksterUpdateAlias dto);
-
+    Task Callback_KinksterUpdateAliasState(KinksterUpdateAliasState dto);
+    Task Callback_KinksterUpdateActiveAliases(KinksterUpdateActiveAliases dto);
     Task Callback_KinksterUpdateValidToys(KinksterUpdateValidToys dto);
     Task Callback_KinksterUpdateActivePattern(KinksterUpdateActivePattern dto);
     Task Callback_KinksterUpdateActiveAlarms(KinksterUpdateActiveAlarms dto);
     Task Callback_KinksterUpdateActiveTriggers(KinksterUpdateActiveTriggers dto);
-    Task Callback_ListenerName(UserData user, string name);
+    Task Callback_ListenerName(SendNameAction dto);
     Task Callback_ShockInstruction(ShockCollarAction dto);
     Task Callback_HypnoticEffect(HypnoticAction dto); // hcState update for hypnosis, be sure to update HcState as well.
 
@@ -78,6 +77,7 @@ public interface IGagspeakHub
     Task Callback_KinksterNewRestraintData(KinksterNewRestraintData dto);
     Task Callback_KinksterNewCollarData(KinksterNewCollarData dto);
     Task Callback_KinksterNewLootData(KinksterNewLootData dto);
+    Task Callback_KinksterNewAliasData(KinksterNewAliasData dto);
     Task Callback_KinksterNewPatternData(KinksterNewPatternData dto);
     Task Callback_KinksterNewAlarmData(KinksterNewAlarmData dto);
     Task Callback_KinksterNewTriggerData(KinksterNewTriggerData dto);
@@ -156,8 +156,8 @@ public interface IGagspeakHub
     Task<HubResponse<CharaActiveRestraint>> UserPushActiveRestraint(PushClientActiveRestraint dto);
     Task<HubResponse<CharaActiveCollar>> UserPushActiveCollar(PushClientActiveCollar dto);
     Task<HubResponse<AppliedCursedItem>> UserPushActiveLoot(PushClientActiveLoot dto);
-    Task<HubResponse> UserPushAliasGlobalUpdate(PushClientAliasGlobalUpdate dto);
-    Task<HubResponse> UserPushAliasUniqueUpdate(PushClientAliasUniqueUpdate dto);
+    Task<HubResponse> UserPushAliasState(PushClientAliasState dto);
+    Task<HubResponse> UserPushActiveAliases(PushClientActiveAliases dto);
     Task<HubResponse> UserPushValidToys(PushClientValidToys dto);
     Task<HubResponse> UserPushActivePattern(PushClientActivePattern dto);
     Task<HubResponse> UserPushActiveAlarms(PushClientActiveAlarms dto);
@@ -168,6 +168,7 @@ public interface IGagspeakHub
     Task<HubResponse> UserPushNewRestraintData(PushClientDataChangeRestraint dto);
     Task<HubResponse> UserPushNewCollarData(PushClientDataChangeCollar dto);
     Task<HubResponse> UserPushNewLootData(PushClientDataChangeLoot dto);
+    Task<HubResponse> UserPushNewAliasData(PushClientDataChangeAlias dto);
     Task<HubResponse> UserPushNewPatternData(PushClientDataChangePattern dto);
     Task<HubResponse> UserPushNewAlarmData(PushClientDataChangeAlarm dto);
     Task<HubResponse> UserPushNewTriggerData(PushClientDataChangeTrigger dto);
@@ -201,7 +202,6 @@ public interface IGagspeakHub
     Task<HubResponse> UserChangeKinksterActivePattern(PushKinksterActivePattern dto);
     Task<HubResponse> UserChangeKinksterActiveAlarms(PushKinksterActiveAlarms dto);
     Task<HubResponse> UserChangeKinksterActiveTriggers(PushKinksterActiveTriggers dto);
-    Task<HubResponse> UserSendNameToKinkster(KinksterBase recipient, string listenerName);
 
     // ------ Permission & State Changes ------
     Task<HubResponse> UserChangeOtherGlobalPerm(SingleChangeGlobal dto);
@@ -213,6 +213,7 @@ public interface IGagspeakHub
     Task<HubResponse> UserApplyMoodlesByStatus(ApplyMoodleStatus dto);
     Task<HubResponse> UserRemoveMoodles(RemoveMoodleId dto);
     Task<HubResponse> UserClearMoodles(KinksterBase dto);
+    Task<HubResponse> UserSendNameToKinkster(SendNameAction dto);
     Task<HubResponse> UserShockKinkster(ShockCollarAction dto); // Sends a shock instruction.
     Task<HubResponse> UserHypnotizeKinkster(HypnoticAction dto); // Applies a hypnosis state to another Kinkster. (special toggle)
 
