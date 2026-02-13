@@ -70,13 +70,13 @@ public record PairPerms
     public bool         AllowHidingChatInput      { get; set; } = false;
     public bool         AllowChatInputBlocking    { get; set; } = false;
     public bool         AllowHypnoImageSending    { get; set; } = false;
-    public string      PiShockShareCode           { get; set; } = ""; // the share Code for the shock collar unique to this user.
-    public bool        AllowShocks                { get; set; } = false; // If we allow shocks from this pair.
-    public bool        AllowVibrations            { get; set; } = false; // If we allow vibrations from this pair.
-    public bool        AllowBeeps                 { get; set; } = false; // If we allow beeps from this pair.
-    public int         MaxIntensity               { get; set; } = -1; // the max intensity of the shock, vibration, or beep.
-    public int         MaxDuration                { get; set; } = -1; // the max duration of the shock, vibration, or beep.
-    public TimeSpan    MaxVibrateDuration         { get; set; } = TimeSpan.Zero; // separate value since vibrations have diff limits.
+    public string       PiShockShareCode          { get; set; } = ""; // the share Code for the shock collar unique to this user.
+    public bool         AllowShocks               { get; set; } = false; // If we allow shocks from this pair.
+    public bool         AllowVibrations           { get; set; } = false; // If we allow vibrations from this pair.
+    public bool         AllowBeeps                { get; set; } = false; // If we allow beeps from this pair.
+    public int          MaxIntensity              { get; set; } = -1; // the max intensity of the shock, vibration, or beep.
+    public int          MaxDuration               { get; set; } = -1; // the max duration of the shock, vibration, or beep.
+    public TimeSpan     MaxVibrateDuration        { get; set; } = TimeSpan.Zero; // separate value since vibrations have diff limits.
 
     /// <summary>
     ///     If these permissions indicate a recipient having Puppeteer control.

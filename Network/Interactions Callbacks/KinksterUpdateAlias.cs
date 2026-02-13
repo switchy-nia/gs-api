@@ -18,7 +18,7 @@ public record KinksterNewAliasData(UserData User, Guid AliasId, AliasTrigger? Ne
 // Leave in enactor if we want to allow pairs to control state changing?
 // (Dont see how this would be possible though since they wouldnt be able to see unshared ones, but for shared ones they could?)
 [MessagePackObject(keyAsPropertyName: true)]
-public record KinksterUpdateAliasState(UserData User, UserData Enactor, Guid Alias, bool NewState);
+public record KinksterUpdateAliasState(UserData User, Guid Alias, bool NewState);
 
 [MessagePackObject(keyAsPropertyName: true)]
-public record KinksterUpdateActiveAliases(UserData User, UserData Enactor, List<Guid> ActiveAliases);
+public record KinksterUpdateActiveAliases(UserData User, List<Guid> ActiveAliases);
