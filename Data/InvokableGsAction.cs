@@ -15,6 +15,8 @@ public abstract record InvokableGsAction : IComparable<InvokableGsAction>
 {
     public abstract InvokableActionType ActionType { get; }
 
+    public abstract bool IsValid();
+
     public virtual bool Equals(InvokableGsAction? other)
         => other is not null && ActionType == other.ActionType;
 
@@ -32,6 +34,8 @@ public record TextAction : InvokableGsAction
     public TextAction() { }
     public TextAction(TextAction other) : base(other) 
         => OutputCommand = other.OutputCommand;
+
+    public override bool IsValid() => !string.IsNullOrWhiteSpace(OutputCommand);
 }
 
 [MessagePackObject(keyAsPropertyName: true)]
@@ -47,6 +51,8 @@ public record GagAction : InvokableGsAction
     public GagAction() { }
     public GagAction(GagAction other) : base(other) 
         => (NewState, GagType, Padlock) = (other.NewState, other.GagType, other.Padlock);
+
+    public override bool IsValid() => GagType is not GagType.None || Padlock is not Padlocks.None;
 }
 
 [MessagePackObject(keyAsPropertyName: true)]
@@ -62,6 +68,9 @@ public record RestrictionAction : InvokableGsAction
     public RestrictionAction() { }
     public RestrictionAction(RestrictionAction other) : base(other) 
         => (NewState, Padlock, RestrictionId) = (other.NewState, other.Padlock, other.RestrictionId);
+
+    public override bool IsValid() => RestrictionId != Guid.Empty || Padlock is not Padlocks.None;
+
 }
 
 [MessagePackObject(keyAsPropertyName: true)]
@@ -76,6 +85,8 @@ public record RestraintAction : InvokableGsAction
     public RestraintAction() { }
     public RestraintAction(RestraintAction other) : base(other) 
         => (NewState, Padlock, RestrictionId) = (other.NewState, other.Padlock, other.RestrictionId);
+
+    public override bool IsValid() => RestrictionId != Guid.Empty || Padlock is not Padlocks.None;
 }
 
 [MessagePackObject(keyAsPropertyName: true)]
@@ -88,7 +99,7 @@ public record MoodleAction : InvokableGsAction
     public MoodleAction(MoodleAction other) : base(other) 
         => MoodleItem = other.MoodleItem;
 
-    public bool IsValid => MoodleItem.Id != Guid.Empty;
+    public override bool IsValid() => MoodleItem.Id != Guid.Empty;
 }
 
 [MessagePackObject(keyAsPropertyName: true)]
@@ -104,6 +115,8 @@ public record PiShockAction : InvokableGsAction
             Intensity = other.ShockInstruction.Intensity,
             Duration = other.ShockInstruction.Duration
         };
+
+    public override bool IsValid() => true;
 }
 
 [MessagePackObject(keyAsPropertyName: true)]
@@ -124,6 +137,8 @@ public record SexToyAction : InvokableGsAction
         PatternId = other.PatternId;
         Intensity = other.Intensity;
     }
+
+    public override bool IsValid() => true;
 }
 
 

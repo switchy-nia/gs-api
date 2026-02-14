@@ -77,6 +77,13 @@ public class AliasTrigger : IEditableStorageItem<AliasTrigger>
         InputCommand = changedItem.InputCommand;
         Actions = changedItem.Actions.ToHashSet();
         WhitelistedUIDs = changedItem.WhitelistedUIDs.ToHashSet();
+    }
 
+    public bool IsValid()
+    {
+        return !string.IsNullOrWhiteSpace(Label)
+            && !string.IsNullOrWhiteSpace(InputCommand)
+            && Actions.Count > 0
+            && Actions.All(a => a.IsValid());
     }
 }
