@@ -28,17 +28,15 @@ public enum InteractionType
     UpdateCollar,
     RemoveCollar,
 
-    ApplyPairMoodle,
-    ApplyPairMoodlePreset,
-    ApplyOwnMoodle,
-    ApplyOwnMoodlePreset,
-    RemoveMoodle,
-    ClearMoodle,
+    ApplyOwnStatus,
+    ApplyOwnPreset,
+    ApplyOtherStatus,
+    ApplyOtherPreset,
+    RemoveStatus,
+    ClearStatuses,
 
     ListenerName,
     AliasList,
-    GlobalTrigger,
-    PairTrigger,
 
     HypnosisEffect,
 

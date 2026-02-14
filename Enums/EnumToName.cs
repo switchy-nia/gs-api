@@ -131,12 +131,12 @@ public static class EnumToName
         InteractionType.UpdateCollar => "Collar Updated",
         InteractionType.RemoveCollar => "Collar Removed",
 
-        InteractionType.ApplyPairMoodle => "Moodle Applied",
-        InteractionType.ApplyPairMoodlePreset => "Moodle Preset Applied",
-        InteractionType.ApplyOwnMoodle => "Moodle Applied",
-        InteractionType.ApplyOwnMoodlePreset => "Moodle Preset Applied",
-        InteractionType.RemoveMoodle => "Moodle Removed",
-        InteractionType.ClearMoodle => "Moodle Cleared",
+        InteractionType.ApplyOtherStatus => "Moodle Applied",
+        InteractionType.ApplyOtherPreset => "Moodle Preset Applied",
+        InteractionType.ApplyOwnStatus => "Moodle Applied",
+        InteractionType.ApplyOwnPreset => "Moodle Preset Applied",
+        InteractionType.RemoveStatus => "Moodle Removed",
+        InteractionType.ClearStatuses => "Moodle Cleared",
 
         InteractionType.SwitchPattern => "Pattern Switched",
         InteractionType.StartPattern => "Pattern Started",
