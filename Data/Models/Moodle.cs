@@ -7,7 +7,7 @@ namespace GagspeakAPI.Data;
 public class Moodle
 {
     public virtual MoodleType Type => MoodleType.Status;
-    public Guid Id { get; internal set; } = Guid.Empty;
+    public Guid Id { get; set; } = Guid.Empty;
 
     public Moodle()
     { }
@@ -32,7 +32,7 @@ public class Moodle
 public class MoodleTuple : Moodle
 {
     public override MoodleType Type => MoodleType.Tuple;
-    public MoodlesStatusInfo Tuple { get; internal set; } = new();
+    public MoodlesStatusInfo Tuple { get; set; } = new();
     public MoodleTuple()
         : base()
     { }
@@ -51,7 +51,7 @@ public class MoodleTuple : Moodle
 public class MoodlePreset : Moodle
 {
     public override MoodleType Type => MoodleType.Preset;
-    public List<Guid> StatusIds { get; internal set; } = new List<Guid>();
+    public List<Guid> StatusIds { get; set; } = new List<Guid>();
 
     public MoodlePreset()
         : base()
