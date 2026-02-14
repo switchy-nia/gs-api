@@ -79,11 +79,12 @@ public class AliasTrigger : IEditableStorageItem<AliasTrigger>
         WhitelistedUIDs = changedItem.WhitelistedUIDs.ToHashSet();
     }
 
-    public bool IsValid()
-    {
-        return !string.IsNullOrWhiteSpace(Label)
-            && !string.IsNullOrWhiteSpace(InputCommand)
-            && Actions.Count > 0
-            && Actions.All(a => a.IsValid());
-    }
+    public bool CanView(string uid)
+        => WhitelistedUIDs.Count is 0 || WhitelistedUIDs.Contains(uid);
+
+    public bool ValidAlias()
+        => !string.IsNullOrWhiteSpace(Label)
+        && !string.IsNullOrWhiteSpace(InputCommand)
+        && Actions.Count > 0
+        && Actions.All(a => a.IsValid());
 }

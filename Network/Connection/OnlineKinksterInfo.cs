@@ -9,4 +9,7 @@ namespace GagspeakAPI.Network;
 /// <param name="User">The UserData object containing the UID</param>
 /// <param name="Ident">The Identity of the online user, hashed for security. </param>
 [MessagePackObject(keyAsPropertyName: true)]
-public record OnlineKinkster(UserData User, string Ident) : KinksterBase(User);
+public record OnlineKinkster(UserData User, string Ident) : KinksterBase(User)
+{
+    public override string ToString() => $"OnlineKinkster: {User.AliasOrUID}";
+}
