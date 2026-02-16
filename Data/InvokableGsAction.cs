@@ -134,6 +134,7 @@ public record SexToyAction : InvokableGsAction
     {
         StartAfter = other.StartAfter;
         EndAfter = other.EndAfter;
+        ActionKind = other.ActionKind;
         PatternId = other.PatternId;
         Intensity = other.Intensity;
     }
