@@ -29,26 +29,8 @@ public enum AchievementType
 
 public enum UnlocksEvent
 {
-    // Restraints lowest priority
+    // (Change these to use the Mediator calls over direct achievement types)
     RestraintUpdated, // for dye changes
-    RestraintStateChange,
-    PairRestraintStateChange,
-    RestraintLayerChange,
-    PairRestraintLayerChange,
-    RestraintLockChange,
-    PairRestraintLockChange,
-
-    // Restrictions 2nd priority
-    RestrictionStateChange,
-    PairRestrictionStateChange,
-    RestrictionLockStateChange,
-    PairRestrictionLockStateChange,
-
-    // Gags 3rd priority
-    GagStateChange,
-    PairGagStateChange,
-    GagLockStateChange,
-    PairGagLockStateChange,
     GagUnlockGuessFailed,
 
     // Collars 4th priority
@@ -80,8 +62,7 @@ public enum UnlocksEvent
 
     // Generic
     GaggedChatSent, // chat type, message, and sender.
-    KinksterGaggedChatSent, // chat type, message, and sender.
-    EmoteExecuted, // contains emote used in string value.
+    KinksterGaggedChatSent, // chat type, message, and sender.   
     TutorialCompleted,
     PairAdded,
     PresetApplied,
@@ -92,7 +73,7 @@ public enum UnlocksEvent
     PlayersInProximity,
     CutsceneInturrupted,
 
-    // Special
+    // Special (remove later)
     SoldSlave,
     AuctionedOff,
 }
